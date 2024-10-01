@@ -1,8 +1,8 @@
 version: '3.8'
 
 services:
-  journal:
-    container_name: Expense-Monitor
+  expense:
+    container_name: expense-monitor
     ports:
       - "5000:3000"
     build:
@@ -16,7 +16,7 @@ services:
       - database
   
   database:
-    container_name: Expense-Database
+    container_name: expense-database
     image: postgres:15-alpine
     environment:
       - POSTGRES_PASSWORD=test

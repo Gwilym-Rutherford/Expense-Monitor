@@ -8,9 +8,9 @@ export class Database{
         this.client = new Client({
             user: 'postgres',
             password: 'test',
-            host: 'journal-database',
+            host: 'database',
             port: 5432,
-            database: 'journal',
+            database: 'expense',
         });
         
         this.client.connect().catch((Error)=>{
@@ -26,7 +26,6 @@ export class Database{
         if(response.rowCount >= 1){
             return response.rows;
         }else{
-            console.log("sorry but your query hasn't yielded any results");
             return false;
         }
     }

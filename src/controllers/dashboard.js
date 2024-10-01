@@ -1,7 +1,7 @@
 import express from "express";
-export const home = express.Router();
+export const dashboard = express.Router();
 
-home.get("/", (req, res)=>{
+dashboard.get("/", (req, res)=>{
     if(req.session.loggedIn === true){
         res.render("home");
     }else{

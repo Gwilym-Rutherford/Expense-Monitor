@@ -8,12 +8,12 @@
         <h2 style="color: red; text-align: center;"><%= msg %></h2>
     <% } %>
     <div class="center">
-        <form class="login-register" action="/login" method="post">
+        <form class="login-register" action="/register" method="post">
             <div><input type="text" placeholder="username" name="username"></div>
             <div><input type="password" placeholder="password" name="password"></div>
-            <div class="center"><input type="submit" value="Login"></div>
+            <div><input type="password" placeholder="password" name="password_check"></div>
+            <div class="center"><input type="submit" value="Register"></div>
         </form>
-        <p>Don't have an account? register <a href="/register"> here </a></p>
     </div>
     
 </body>

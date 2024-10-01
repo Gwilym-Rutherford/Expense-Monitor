@@ -3,8 +3,9 @@ import path from "path";
 import Session from "express-session";
 import * as crypto from "crypto";
 
-import { home } from "./controllers/home.js";
+import { dashboard } from "./controllers/dashboard.js";
 import { login } from "./controllers/login.js";
+import { register } from "./controllers/register.js";
 
 const __dirname = import.meta.dirname;
 const app = express();
@@ -28,8 +29,9 @@ app.use(
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, '/views'))
 
-app.use("/", home);
+app.use("/", dashboard);
 app.use("/login", login);
+app.use("/register", register);
 
 
 

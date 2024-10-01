@@ -24,7 +24,7 @@ p{
     justify-content: center;
 }
 
-.login{
+.login-register{
     margin-top: 2rem;
     padding: 10px;
     border-radius: 5px;
@@ -32,3 +32,4 @@ p{
     border-style: solid;
     scale: 150%;
 }
+
