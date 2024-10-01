@@ -3,13 +3,14 @@
 
 <body>
     <h1>Dashboard</h1>
-    <%- include('partials/createExpense.ejs', {msg: expenseMsg}) %>
-    <div class="chart1">
-        <canvas id="myChart" width="50%"></canvas>
+    <div class="chartFormWrapper">
+        <div class="expenseChart">
+            <canvas id="myChart" width="50%"></canvas>
+        </div>
+        <%- include('partials/expenseForm.ejs', {msg: expenseMsg}) %>
     </div>
+    
     <%- include('partials/scripts.ejs') %>
-
     <%- include('partials/footer.ejs') %>
-
 </body>
 </html>

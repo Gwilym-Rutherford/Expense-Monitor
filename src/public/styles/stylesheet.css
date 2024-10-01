@@ -13,10 +13,6 @@ p{
     padding: 5px;
 }
 
-.chart1{
-    width: 50%;
-}
-
 .center{
     display: flex;
     flex-direction: column;
@@ -32,4 +28,25 @@ p{
     border-style: solid;
     scale: 150%;
 }
+
+.chartFormWrapper{
+    display: flex;
+    justify-content: space-between;
+}
+
+.expenseChart{
+    width: 100%;
+}
+
+.expenseFormWrapper{
+    width: 100%;
+}
+
+.expenseForm{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: 0 auto;
+}
+
 

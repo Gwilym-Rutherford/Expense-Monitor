@@ -1,0 +1,14 @@
+<div class="expenseFormWrapper">
+    <% if(typeof msg !== 'undefined') {%>
+        <h2 style="color: red; text-align: center;"><%= msg %></h2>
+    <% } %>
+    
+    <form class="expenseForm" action="/" method="post">
+        <label for="expense">Expense</label>
+        <input id="expense" type="text" placeholder="Expense" name="expense">
+        <div id="dropdown"></div>
+        <label for="amount">Amount: </label>
+        <input id="amount" type="number" placeholder="£0.00" name="amount">
+        <input type="submit" value="Add new Expense" name="submitExpense">
+    </form>
+</div>

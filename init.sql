@@ -18,6 +18,8 @@ CREATE TABLE expense(
 CREATE TABLE amount(
     amount_id SERIAL PRIMARY KEY,
     expense_id INT,
+    user_id INT,
     amount DECIMAL,
-    FOREIGN KEY(expense_id) REFERENCES expense(expense_id)
+    FOREIGN KEY(expense_id) REFERENCES expense(expense_id),
+    FOREIGN KEY(user_id) REFERENCES users(user_id)
 );
