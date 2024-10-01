@@ -1,0 +1,9 @@
+<div class="createExpenseWrapper">
+    <% if(typeof msg !== 'undefined') {%>
+        <h2 style="color: red; text-align: center;"><%= msg %></h2>
+    <% } %>
+    <form class="createExpenseForm" action="/" method="post">
+        <input type="text" placeholder="Expense" name="expense">
+        <input type="submit" value="Add new Expense" name="submitExpense">
+    </form>
+</div>

@@ -8,7 +8,7 @@ CREATE TABLE users(
     password TEXT
 );
 
-CREATE TABLE expenses(
+CREATE TABLE expense(
     expense_id SERIAL PRIMARY KEY,
     user_id INT,
     expense VARCHAR(255),
@@ -17,7 +17,7 @@ CREATE TABLE expenses(
 
 CREATE TABLE amount(
     amount_id SERIAL PRIMARY KEY,
-    user_id INT,
+    expense_id INT,
     amount DECIMAL,
-    FOREIGN KEY(user_id) REFERENCES users(user_id)
+    FOREIGN KEY(expense_id) REFERENCES expense(expense_id)
 );

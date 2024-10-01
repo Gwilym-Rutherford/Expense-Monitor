@@ -20,8 +20,7 @@ register.post("/", async (req, res)=>{
     }else if(password !== password_check){
         res.render("register", {msg: "sorry Your passwords don't match up!!"});
     }else{
-        let user = new Users;
-        user.addUser(username, password);
+        users.addUser(username, password);
         res.redirect("/login");
     }
 });

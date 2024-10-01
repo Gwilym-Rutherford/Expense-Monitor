@@ -13,8 +13,9 @@ login.post("/", async(req, res)=>{
     let user = new Users();
     let user_info = (await user.get(`user_name='${username}'`))[0];
 
-    if(user_info.password == password){
+    if(typeof user_info != 'undefined' && user_info.password == password){
         req.session.loggedIn = true;
+        req.session.user_id = user_info.user_id;
         res.redirect("/");
     }else{
         res.render("login", {msg: "username or password is incorrect!!"});
