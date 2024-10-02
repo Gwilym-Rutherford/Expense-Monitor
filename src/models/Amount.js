@@ -10,6 +10,6 @@ export class Amount extends Database{
     }
 
     async getAmount(user_id){
-        return this.client.query(`SELECT 'amount' WHERE user_id='${user_id}'`);
+        return this.client.query(`SELECT (amount) WHERE user_id='${user_id}'`);
     }
 }

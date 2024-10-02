@@ -6,6 +6,7 @@ import * as crypto from "crypto";
 import { dashboard } from "./controllers/dashboard.js";
 import { login } from "./controllers/login.js";
 import { register } from "./controllers/register.js";
+import { contentApi } from "./controllers/contentApi.js";
 
 const __dirname = import.meta.dirname;
 const app = express();
@@ -32,10 +33,7 @@ app.set("views", path.join(__dirname, '/views'))
 app.use("/", dashboard);
 app.use("/login", login);
 app.use("/register", register);
-
-
-
-
+app.use("/content", contentApi);
 
 app.listen(PORT, ()=>{
     console.log("listening on port: " + PORT);

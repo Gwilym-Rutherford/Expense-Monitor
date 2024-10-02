@@ -12,20 +12,27 @@ dashboard.get("/", async (req, res)=>{
 });
 
 dashboard.post("/", async (req, res)=>{
+    let user_id = req.session.user_id;
+
     let expense_value = (req.body.expense).toUpperCase();
     let expenses = new Expense();
-    let currentExpenses = await expenses.get(`user_id='${req.session.user_id}' AND expense='${expense_value}'`);
+    let currentExpenses = await expenses.get(`user_id='${user_id}' AND expense='${expense_value}'`);
 
+    let amount_value = req.body.amount;
     let amount = new Amount();
-    let amount_value = req.body.expense;
 
-    if(expense_value != "" && amount_value != ""){
-        if(currentExpenses.length > 0){
-            let expense_id = expenses.getExpenseID(expense_value);
-            amount.addAmount(expense_id, req.session.user_id, amount_value);
-        }else{
-            let expenseReturnValue = await expenses.addExpense(req.session.user_id, expense_value);
-            amount.addAmount(expenseReturnValue.expense_id, req.session.user_id, amount_value);
+    if(!(currentExpenses.length > 0)){
+        await expenses.addExpense(user_id, expense_value);
+        if(!amount_value){
+            res.redirect("/");
         }
+    }else if(!amount_value){
+        res.render("dashboard", {expenseMsg: "This expense has already been added"});
+    }
+    
+    if(amount_value){
+        let expense_id = await expenses.getExpenseId(expense_value);
+        amount.addAmount(expense_id, user_id, amount_value);
+        res.redirect("/");
     }
 });
