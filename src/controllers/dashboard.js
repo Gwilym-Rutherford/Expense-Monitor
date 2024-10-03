@@ -1,6 +1,6 @@
 import express from "express";
 import { Expense } from "../models/Expense.js";
-import { Amount } from "../models/Amount.js";
+import { Users_Expense } from "../models/Users_Expense.js";
 export const dashboard = express.Router();
 
 dashboard.get("/", async (req, res)=>{
@@ -19,7 +19,7 @@ dashboard.post("/", async (req, res)=>{
     let currentExpenses = await expenses.get(`user_id='${user_id}' AND expense='${expense_value}'`);
 
     let amount_value = req.body.amount;
-    let amount = new Amount();
+    let amount = new Users_Expense();
 
     if(!(currentExpenses.length > 0)){
         await expenses.addExpense(user_id, expense_value);

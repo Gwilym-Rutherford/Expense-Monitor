@@ -15,7 +15,7 @@ CREATE TABLE expense(
     FOREIGN KEY(user_id) REFERENCES users(user_id)
 );
 
-CREATE TABLE amount(
+CREATE TABLE users_expense(
     amount_id SERIAL PRIMARY KEY,
     expense_id INT,
     user_id INT,

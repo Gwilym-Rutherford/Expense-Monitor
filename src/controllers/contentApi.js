@@ -8,7 +8,7 @@ contentApi.get("/expenses", async (req, res)=>{
     let expense = new Expense();
     
     if(amount){
-        res.send("amount");
+        res.send((await expense.join("expense_id", "expense", "users_expense")).rows);
     }else{
         res.send((await expense.getExpense(user_id)).rows);
     }

@@ -1,8 +1,8 @@
 import { Database } from "./Database.js";
 
-export class Amount extends Database{
+export class Users_Expense extends Database{
     constructor(){
-        super(Amount.name);
+        super(Users_Expense.name);
     }
 
     addAmount(expense_id, user_id, amount){
@@ -12,4 +12,5 @@ export class Amount extends Database{
     async getAmount(user_id){
         return this.client.query(`SELECT (amount) WHERE user_id='${user_id}'`);
     }
+
 }

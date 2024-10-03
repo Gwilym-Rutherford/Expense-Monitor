@@ -42,10 +42,9 @@ export class Database{
      * @param {String} col2 name of the matching column in the second table
      * @returns the result of the two tables after being joined
      */
-    async innerJoin(table1, col1, table2, col2){
-        let response = await this.client.query(`SELECT * FROM ${table1}
-                                                INNER JOIN ${table2}
-                                                ON ${table1 + "." + col1} = ${table2 + "." + col2}`);
+    async join(field, table1, table2){
+        let response = await this.client.query(`SELECT * FROM ${table1}, ${table2}
+                                                WHERE ${table1 + "." + field} = ${table2 + "." + field}`);
         return response;    
     }
 }
