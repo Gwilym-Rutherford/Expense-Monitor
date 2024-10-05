@@ -24,7 +24,6 @@ dashboard.post("/", async (req, res)=>{
         expenseValue.toUpperCase();
     }
     let expenseExists = await checkExpenses(user_id, expenseValue);
-    console.log
 
     let amountValue = req.body.amount;
     let usersExpense = new Users_Expense();
@@ -38,7 +37,6 @@ dashboard.post("/", async (req, res)=>{
             res.render("dashboard", {expenseMsg: "Please add an amount"});
         }
     }else if(expenseValue){
-        console.log("expense triggered");
         if(amountValue != "" && expenseExists){
             let expense_id = await expenses.getExpenseId(expenseValue);
             usersExpense.addAmount(expense_id, user_id, amountValue);
