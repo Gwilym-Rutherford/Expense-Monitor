@@ -3,9 +3,10 @@
 
 <body>
     <h1>Dashboard</h1>
+    <%- include('partials/graphOptions.ejs') %>
     <div class="chartFormWrapper">
         <div class="expenseChart">
-            <canvas id="myChart" width="50%"></canvas>
+            <canvas id="dashboardChart" width="50%"></canvas>
         </div>
         <%- include('partials/expenseForm.ejs', {msg: expenseMsg}) %>
     </div>

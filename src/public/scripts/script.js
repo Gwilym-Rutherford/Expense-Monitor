@@ -16,9 +16,13 @@ window.addEventListener("load", async ()=>{
 });
 
 
+async function getJson(request){
+    let expenses = await fetch(request);
+    return await expenses.json();
+}
+
 async function getExpenses(){
-    let expenses = await fetch("/content/expenses");
-    let expenses_json = await expenses.json();
+    let expenses_json = await getJson("/content/expenses")
     let expenses_arr = [];
     for(let i = 0; i < expenses_json.length; i++){
         expenses_arr.push(expenses_json[i].expense);
@@ -26,6 +30,7 @@ async function getExpenses(){
 
     return expenses_arr;
 }
+
 
 
 // disable text input if dropdown menu has been selected and vice versa
@@ -48,25 +53,35 @@ expenseInput.addEventListener("change", ()=>{
 });
 
 
+// get graph data
+let expenses = await getExpenses();
+let expensesData = await getJson("/content/expenseS?amount=true");
+let amountArr = new Array(expenses.length).fill(parseInt(0));
+expensesData.forEach(element => {
+    let expense = element.expense;
+    let amountValue = element.amount;
+    let index = expenses.indexOf(expense);
+    amountArr[index] = amountArr[index] + parseInt(amountValue);
+});
 
 
-const ctx = document.getElementById('myChart');
+const ctx = document.getElementById('dashboardChart');
 
 new Chart(ctx, {
-type: 'bar',
-data: {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+  type: 'line',
+  data: {
+    labels: expenses,
     datasets: [{
-    label: '# of Votes',
-    data: [12, 19, 3, 5, 2, 3],
-    borderWidth: 1
+      label: '# of Votes',
+      data: amountArr,
+      borderWidth: 1
     }]
-},
-options: {
+  },
+  options: {
     scales: {
-    y: {
+      y: {
         beginAtZero: true
+      }
     }
-    }
-}
+  }
 });

@@ -43,7 +43,7 @@ export class Database{
      * @returns the result of the two tables after being joined
      */
     async join(field, table1, table2){
-        let response = await this.client.query(`SELECT * FROM ${table1}, ${table2}
+        let response = await this.client.query(`SELECT  FROM ${table1}, ${table2}
                                                 WHERE ${table1 + "." + field} = ${table2 + "." + field}`);
         return response;    
     }

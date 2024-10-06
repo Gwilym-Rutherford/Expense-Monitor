@@ -10,7 +10,15 @@ export class Users_Expense extends Database{
     }
 
     async getAmount(user_id){
-        return this.client.query(`SELECT (amount) WHERE user_id='${user_id}'`);
+        return await this.client.query(`SELECT (amount) WHERE user_id='${user_id}'`);
+    }
+
+    async getExpenseAmount(user_id, month){
+        return await this.client.query(`SELECT users_expense.*, expense.expense, 
+                                        EXTRACT(MONTH FROM users_expense.entry_date) AS "month"
+                                        FROM users_expense
+                                        JOIN expense ON users_expense.expense_id = expense.expense_id
+                                        WHERE EXTRACT(MONTH FROM users_expense.entry_date) = ${month} AND users_expense.user_id=${user_id};`);
     }
 
 }
