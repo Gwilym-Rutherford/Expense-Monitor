@@ -20,5 +20,4 @@ export class Users_Expense extends Database{
                                         JOIN expense ON users_expense.expense_id = expense.expense_id
                                         WHERE EXTRACT(MONTH FROM users_expense.entry_date) = ${month} AND users_expense.user_id=${user_id};`);
     }
-
 }

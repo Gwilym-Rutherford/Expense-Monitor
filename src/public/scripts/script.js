@@ -64,6 +64,8 @@ expensesData.forEach(element => {
     amountArr[index] = amountArr[index] + parseInt(amountValue);
 });
 
+// get dates for graphs
+
 
 const ctx = document.getElementById('dashboardChart');
 
@@ -72,10 +74,16 @@ new Chart(ctx, {
   data: {
     labels: expenses,
     datasets: [{
-      label: '# of Votes',
+      label: `Expenses for: ${(new Date).getMonth() + 1} / ${(new Date).getFullYear()} `,
       data: amountArr,
-      borderWidth: 1
-    }]
+      borderWidth: 2,
+      tension: 0.1
+    },{
+    label: `Expenses for: ${(new Date).getMonth()} / ${(new Date).getFullYear()} `,
+    data: amountArr,
+    borderWidth: 2,
+    tension: 0.1
+  }]
   },
   options: {
     scales: {
