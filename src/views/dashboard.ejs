@@ -3,6 +3,15 @@
 
 <body>
     <%- include('partials/nav.ejs') %>
+    <label for="graphOptions">Select type of graph:</label>
+    <select id="graphOptions" name="graphOptions">
+        <option value="line" selected>line</option>
+        <option value="pie">pie</option>
+        <option value="bar">bar</option>
+        <option value="doughnut">doughnut</option>
+        <option value="polarArea">polarArea</option>
+        <option value="radar">radar</option>
+    </select>
     <div class="chartFormWrapper">
         <div class="expenseChart">
             <canvas id="dashboardChart" width="50%"></canvas>

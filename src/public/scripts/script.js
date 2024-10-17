@@ -64,32 +64,38 @@ expensesData.forEach(element => {
     amountArr[index] = amountArr[index] + parseInt(amountValue);
 });
 
-// get dates for graphs
 
+let chart;
+function drawChart(type){
+  const ctx = document.getElementById('dashboardChart');
+  if (chart) chart.destroy();
 
-const ctx = document.getElementById('dashboardChart');
-
-new Chart(ctx, {
-  type: 'line',
-  data: {
-    labels: expenses,
-    datasets: [{
-      label: `Expenses for: ${(new Date).getMonth() + 1} / ${(new Date).getFullYear()} `,
-      data: amountArr,
-      borderWidth: 2,
-      tension: 0.1
-    },{
-    label: `Expenses for: ${(new Date).getMonth()} / ${(new Date).getFullYear()} `,
-    data: amountArr,
-    borderWidth: 2,
-    tension: 0.1
-  }]
-  },
-  options: {
-    scales: {
-      y: {
-        beginAtZero: true
+  chart = new Chart(ctx, {
+    type: type,
+    data: {
+      labels: expenses,
+      datasets: [{
+        label: `Expenses for: ${(new Date).getMonth() + 1} / ${(new Date).getFullYear()} `,
+        data: amountArr,
+        borderWidth: 2,
+        tension: 0.1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
       }
     }
-  }
+  });
+}
+
+drawChart("line");
+
+let graphStyle = document.getElementById("graphOptions");
+graphStyle.addEventListener("change", (event)=>{
+  drawChart(graphStyle.value);
 });
+
+

@@ -1,17 +1,20 @@
 import pg from 'pg';
 const { Client } = pg;
+
+const client = new Client({
+    user: 'postgres',
+    password: 'test',
+    host: 'database',
+    port: 5432,
+    database: 'expense',
+});
+
 // Things i have learnt
 // postgres is not case sensative when it comes to table names, that is why this.table
 // works when specifing a table name
 export class Database{
     constructor(table){
-        this.client = new Client({
-            user: 'postgres',
-            password: 'test',
-            host: 'database',
-            port: 5432,
-            database: 'expense',
-        });
+        this.client = client;
         
         this.client.connect().catch((Error)=>{
             console.log("Error:", Error);
