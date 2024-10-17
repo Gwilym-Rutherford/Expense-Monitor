@@ -8,6 +8,7 @@ import { login } from "./controllers/login.js";
 import { register } from "./controllers/register.js";
 import { contentApi } from "./controllers/contentApi.js";
 import { history } from "./controllers/history.js";
+import { edit } from "./controllers/edit.js";
 
 const __dirname = import.meta.dirname;
 const app = express();
@@ -36,6 +37,7 @@ app.use("/login", login);
 app.use("/register", register);
 app.use("/content", contentApi);
 app.use("/history", history);
+app.use("/edit", edit);
 
 app.listen(PORT, ()=>{
     console.log("listening on port: " + PORT);

@@ -95,4 +95,16 @@ table {
     margin: 0 auto;
 }
 
+.edit{
+    display: flex;
+    flex-direction: column;
+
+    border-top: black solid 3px;
+    border-bottom: black solid 3px;
+}
+
+.edit > div{
+    padding: 10px;
+}
+
 

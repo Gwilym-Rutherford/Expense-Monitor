@@ -1,0 +1,18 @@
+<%- include('partials/header.ejs') %>
+<html>
+
+<body>
+    <%- include('partials/nav.ejs') %>
+
+    <div class="center">
+        <form class="edit" method="post" accept="/edit/<%- id %>">
+            <div><input type="number" name="price" value="<%- price %>"></div> 
+            <div><select id="selectTag" name="category"></select></div>
+            <div><input type="submit" value="Save Changes"></div>
+        </form>
+    </div>
+
+    <script src="/public/scripts/edit.js"></script>
+    <%- include('partials/footer.ejs') %>
+</body>
+</html>

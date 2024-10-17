@@ -18,11 +18,16 @@ async function addDataToTable(table){
     let expensesData = await getJson("/content/expenseS?amount=true");
     expensesData.forEach((element) => {
         let objProperties = Object.keys(element);
-        let row  = table.insertRow(0);
-        for(let i = 0; i < objProperties.length; i++){
-            let cell = row.insertCell(i);
+        let row = table.insertRow(0);
+        for(let i = 3; i < objProperties.length; i++){
+            let cell = row.insertCell(i - 3);
             cell.innerHTML = element[objProperties[i]];
         }
+        let editCell = row.insertCell(-1);
+        let anchor = document.createElement("a");
+        anchor.href = "/edit/" + element[objProperties[0]];
+        anchor.text = "edit";
+        editCell.appendChild(anchor);
 
     });
 }
