@@ -29,9 +29,6 @@ edit.post("/:id", async(req, res)=>{
     if(category){
         let expenses = new Expense();
         let expenseId = await expenses.getExpenseId(category);
-
-        console.log("expense_id:", expenseId);
-
         userExpense.updateCategory(userExpenseId, expenseId);
     }
 

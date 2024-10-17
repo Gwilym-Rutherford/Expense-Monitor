@@ -16,6 +16,8 @@ async function getExpenses(){
 async function addDataToTable(table){
     let expenses = await getExpenses();
     let expensesData = await getJson("/content/expenseS?amount=true");
+
+    // add data cells
     expensesData.forEach((element) => {
         let objProperties = Object.keys(element);
         let row = table.insertRow(0);
@@ -28,9 +30,19 @@ async function addDataToTable(table){
         anchor.href = "/edit/" + element[objProperties[0]];
         anchor.text = "edit";
         editCell.appendChild(anchor);
+    });
 
+    // add colum titles
+    let header = table.createTHead();
+    let headerRow = header.insertRow(0);
+
+    let titles = Object.keys(expensesData[0]).slice(3);
+    titles.forEach((element, index)=>{
+        let cell = headerRow.insertCell(index);
+        cell.innerHTML = element;
     });
 }
+
 
 
 let table = document.getElementById("history");
