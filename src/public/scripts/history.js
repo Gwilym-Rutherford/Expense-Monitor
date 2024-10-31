@@ -25,11 +25,19 @@ async function addDataToTable(table){
             let cell = row.insertCell(i - 3);
             cell.innerHTML = element[objProperties[i]];
         }
-        let editCell = row.insertCell(-1);
-        let anchor = document.createElement("a");
-        anchor.href = "/edit/" + element[objProperties[0]];
-        anchor.text = "edit";
-        editCell.appendChild(anchor);
+        let editCell = row.insertCell();
+        let edit = document.createElement("a");
+        edit.href = "/edit/" + element[objProperties[0]];
+        edit.text = "edit";
+        editCell.appendChild(edit);
+        
+        let deleteCell = row.insertCell();
+        let deleteExpense = document.createElement("a");
+        deleteExpense.href = "/delete/" + element[objProperties[0]];
+        deleteExpense.text = "delete";
+        deleteCell.appendChild(deleteExpense);
+        
+    
     });
 
     // add colum titles

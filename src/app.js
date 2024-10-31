@@ -9,6 +9,7 @@ import { register } from "./controllers/register.js";
 import { contentApi } from "./controllers/contentApi.js";
 import { history } from "./controllers/history.js";
 import { edit } from "./controllers/edit.js";
+import { deleteExpense } from "./controllers/delete.js";
 
 const __dirname = import.meta.dirname;
 const app = express();
@@ -38,6 +39,7 @@ app.use("/register", register);
 app.use("/content", contentApi);
 app.use("/history", history);
 app.use("/edit", edit);
+app.use("/delete", deleteExpense);
 
 app.listen(PORT, ()=>{
     console.log("listening on port: " + PORT);

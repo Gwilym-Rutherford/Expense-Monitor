@@ -28,12 +28,14 @@ export class Users_Expense extends Database{
 
     async updateCategory(amount_id, updateValue){
         await this.client.query(`UPDATE ${this.table} SET expense_id='${updateValue}' WHERE amount_id='${amount_id}';`);
-        //update users_expense set amount=10 where amount_id=1;
     }
 
     async updatePrice(amount_id, updateValue){
         await this.client.query(`UPDATE ${this.table} SET amount='${updateValue}' WHERE amount_id='${amount_id}';`);
     }
 
+    async deleteExpense(amount_id){
+        await this.client.query(`DELETE FROM ${this.table} WHERE amount_id='${amount_id}';`);
+    }
 
 }
