@@ -1,6 +1,5 @@
 import express from "express"
 import { Users_Expense } from "../models/Users_Expense.js";
-import { Expense } from "../models/Expense.js"
 export const deleteExpense = express.Router();
 
 deleteExpense.get("/:id", async(req, res)=>{

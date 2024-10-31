@@ -25,3 +25,11 @@ CREATE TABLE users_expense(
     FOREIGN KEY(expense_id) REFERENCES expense(expense_id),
     FOREIGN KEY(user_id) REFERENCES users(user_id)
 );
+
+CREATE TABLE plans(
+    plan_id INT,
+    expense_id INT,
+    amount DECIMAL,
+    FOREIGN KEY(expense_id) REFERENCES expense(expense_id),
+    PRIMARY KEY(plan_id, expense_id)
+);
